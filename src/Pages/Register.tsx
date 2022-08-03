@@ -35,7 +35,10 @@ const Register = () =>{
             //redireccionar el usuario a el panel
             
         } catch (errors: any) {
-            setErrors(errors.response.data.errors);
+            if(errors.response){
+                errors.response.status === 400 && setErrors(errors.response.data.errors);
+
+            }
             setSendingData(false);
         }
 
